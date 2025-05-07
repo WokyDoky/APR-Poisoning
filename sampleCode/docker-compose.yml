@@ -41,7 +41,7 @@ services:
                       /etc/init.d/openbsd-inetd start  &&
                       tail -f /dev/null
                  "
-    hostM:
+    hostC:
         image: handsonsecurity/seed-ubuntu:large
         container_name: hostM-10.9.0.7
         tty: true
