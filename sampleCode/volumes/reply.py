@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 from scapy.all import *
 
-from sampleCode.ARP_MIMT_Request import VICTIM_IP
-from sampleCode.ARP_Request import FAKE_IP
-
 IP_M = "10.9.0.7"
 MAC_M = "02:42:0a:09:00:69"
 
