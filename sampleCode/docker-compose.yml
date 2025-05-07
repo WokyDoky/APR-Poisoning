@@ -43,14 +43,14 @@ services:
                  "
     hostC:
         image: handsonsecurity/seed-ubuntu:large
-        container_name: hostC-10.9.0.7
+        container_name: hostM-10.9.0.7
         tty: true
         cap_add:
                 - ALL
         privileged: true
         networks:
             net-10.9.0.0:
-                ipv4_address: 10.9.0.7
+                ipv4_address: 10.9.0.105
         command: bash -c "
                       /etc/init.d/openbsd-inetd start  &&
                       tail -f /dev/null
