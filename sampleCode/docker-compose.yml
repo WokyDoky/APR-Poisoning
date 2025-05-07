@@ -41,7 +41,7 @@ services:
                       /etc/init.d/openbsd-inetd start  &&
                       tail -f /dev/null
                  "
-    hostC:
+    hostM:
         image: handsonsecurity/seed-ubuntu:large
         container_name: hostM-10.9.0.7
         tty: true
@@ -51,6 +51,8 @@ services:
         networks:
             net-10.9.0.0:
                 ipv4_address: 10.9.0.105
+        volumes:
+                - ./volumes:/volumes
         command: bash -c "
                       /etc/init.d/openbsd-inetd start  &&
                       tail -f /dev/null
