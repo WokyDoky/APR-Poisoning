@@ -4,8 +4,8 @@ from scapy.all import *
 # Fake details
 VICTIM_IP = "10.9.0.5"      # Target IP (who will get poisoned)
 TARGET_MAC = "02:42:0a:09:00:05"  # MAC of the target (victim)
-FAKE_IP = "10.9.0.17"        # Pretend to be this IP
-ATTACKER_MAC = "aa:bb:cc:dd:ee:ff"
+FAKE_IP = "10.9.0.7"        # Pretend to be this IP
+ATTACKER_MAC = "02:42:0a:09:00:69"
 
 print("SENDING SPOOFED ARP REQUEST...")
 
