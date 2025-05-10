@@ -14,6 +14,7 @@ The objective is to use Host M to launch attacks, intercepting and modifying com
 ## Prerequisites
 
 * **Docker and Docker Compose:** For setting up the lab environment as described in the assignment.
+    * **Important:** Ensure you are using the `docker-compose.yml` file from the "sampleCode" directory/archive provided with the assignment, as this contains the corrected and updated Docker configurations necessary for the lab.
 * **Scapy:** All Python scripts rely on the Scapy library for packet manipulation. This should be installed on the attacker machine (Host M).
     ```bash
     pip install scapy
@@ -73,7 +74,7 @@ These tasks involve setting up a continuous ARP poisoning attack to intercept tr
 
 ## General Instructions for Running MITM Attack Scripts (Tasks 2 & 3)
 
-1.  **Setup Docker Environment:** Ensure Host A, Host B, and Host M containers are running.
+1.  **Setup Docker Environment:** Ensure Host A, Host B, and Host M containers are running using the `docker-compose.yml` from the "sampleCode" materials.
 2.  **Start Continuous ARP Poisoning:** On Host M, run `sudo python3 combined_poison.py`. Keep this running in one terminal.
 3.  **Disable IP Forwarding on Host M:** In another terminal on Host M, run `sudo sysctl net.ipv4.ip_forward=0`.
 4.  **Run the Specific MITM Script:** In a new terminal on Host M, run either `sudo python3 telnet_mitm.py` or `sudo python3 netcat_mitm.py`.
