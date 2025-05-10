@@ -3,10 +3,10 @@ from scapy.all import Ether, ARP, sendp
 import time
 
 # --- Configuration ---
-IP_A_TARGET = "10.9.0.5"           # Host A's IP (the victim)
-MAC_A_TARGET = "02:42:0a:09:00:05" # Host A's MAC
+IP_A_TARGET = "10.9.0.6"           # Host A's IP (the victim)
+MAC_A_TARGET = "02:42:0a:09:00:06" # Host A's MAC
 
-IP_B_SPOOFED = "10.9.0.6"          # Host B's IP (the IP we are claiming to be)
+IP_B_SPOOFED = "10.9.0.5"          # Host B's IP (the IP we are claiming to be)
 
 MAC_M_ATTACKER = "02:42:0a:09:00:69"
 
