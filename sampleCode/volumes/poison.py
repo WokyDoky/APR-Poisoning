@@ -14,7 +14,7 @@ BROADCAST_MAC = "ff:ff:ff:ff:ff:ff"
 INTERFACE = "eth0" 
 POISON_INTERVAL = 5 # Seconds
 
-print("[*] Starting Combined ARP Poisoning...")
+print("[*] Starting ARP Poisoning...")
 print(f"[*] Target 1 (Host A - {VICTIM_A_IP}): Will be told {VICTIM_B_IP} is at {ATTACKER_MAC}")
 print(f"[*] Target 2 (Host B - {VICTIM_B_IP}): Will be told {VICTIM_A_IP} is at {ATTACKER_MAC}")
 
